@@ -6,7 +6,6 @@ const schema = mongoose.Schema;
 
 //export the schema
 export const UserSchema = new schema({
-
     name:{
         type: String,
         require : 'Please enter a name.'

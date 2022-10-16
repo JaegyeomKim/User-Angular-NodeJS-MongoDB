@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { User } from '../../User';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';      // 1. From angular-fontawesome    
 
@@ -11,7 +11,8 @@ export class UsersInfoComponent implements OnInit {
 
   @Input() 
   user !: User;
-
+  @Output() 
+  OnDeleteUser : EventEmitter<User> = new EventEmitter();
 
   faTimes = faTimes; // 2. From angular-fontawesome
  
@@ -19,6 +20,10 @@ export class UsersInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onDelete(user : User){
+    this.OnDeleteUser.emit(user);
   }
 
 }

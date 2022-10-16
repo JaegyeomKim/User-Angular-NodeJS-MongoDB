@@ -1,6 +1,5 @@
 // Import express
 import express from 'express';
-
 //import the allRoutes function from our restRoute.js file
 import allRoutes from './src/route/restRoute.js';
 
@@ -9,9 +8,11 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
 const app = express();
-
 // Setup the port for the server
 const port = 4000;
+
+
+
 
 //set connection between the API and mongoDB
 mongoose.Promise = global.Promise;
@@ -21,9 +22,24 @@ mongoose.connect('mongodb+srv://JaegyeomKim:jk%40157600@cluster0.clqb6qh.mongodb
     useUnifiedTopology: true
 });
 
+
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");    
+    next();
+  });
+
+
+  
 //parse requests and make it redable for our API
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+
+
+
 
 //call the allRoute function and send app which initializes express
 allRoutes(app);

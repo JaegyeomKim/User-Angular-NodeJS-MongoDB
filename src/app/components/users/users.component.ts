@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { takeLast } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/User';
 
@@ -17,4 +18,10 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe((users)=>this.users = users); // start UserService Method which call List from service (Here <- sample <- List)
   }
 
+  deleteUser(user:User){
+    this.userService.
+    deleteUser(user)
+    .subscribe(
+      () => (this.users = this.users.filter((t) => t._id !== user._id)));
+  }
 }
