@@ -1,9 +1,12 @@
+<app-add-user
+(OnAddUser)="addTask($event)"></app-add-user>
+
 <app-users-info 
 
 *ngFor="let user of users"
-
 [user]="user"
 
 (OnDeleteUser)="deleteUser(user)"
+(onToggleAdmit)="toggleAdmit(user)"
 >
 </app-users-info>

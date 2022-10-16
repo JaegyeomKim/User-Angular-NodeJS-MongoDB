@@ -3,5 +3,4 @@ export interface User {
     name : string;
     class : string;
     admin : boolean;
-    what : Int16Array;
 }

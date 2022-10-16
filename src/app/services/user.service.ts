@@ -3,11 +3,11 @@ import {from, Observable, of} from 'rxjs'
 import {HttpClient, HttpHeaders} from '@angular/common/http';  // For Backend connection
 import { User } from 'src/app/User';
 
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type' : 'application/json'
-//   })
-// }
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type' : 'application/json'
+  })
+}
 
 
 @Injectable({
@@ -27,5 +27,15 @@ export class UserService {
   deleteUser(user:User) : Observable<User> {
     const url = `${this.apiURL}/${user._id}`;
     return this.http.delete<User>(url);
+  }
+
+
+  updateUserAdmin( user: User) :Observable<User>{
+    const url = `${this.apiURL}/${user._id}`;
+    return this.http.put<User>(url,user,httpOptions)
+  } 
+
+  addUser(user : User) : Observable<User>{
+    return this.http.post<User>(this.apiURL, user, httpOptions);
   }
 }

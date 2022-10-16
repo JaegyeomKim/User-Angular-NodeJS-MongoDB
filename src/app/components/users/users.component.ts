@@ -24,4 +24,13 @@ export class UsersComponent implements OnInit {
     .subscribe(
       () => (this.users = this.users.filter((t) => t._id !== user._id)));
   }
+
+  toggleAdmit(user:User){
+    user.admin = !user.admin;
+    this.userService.updateUserAdmin(user).subscribe();
+  }
+
+  addTask(user : User){
+    this.userService.addUser(user).subscribe((user) => (this.users.push(user)));
+  }
 }

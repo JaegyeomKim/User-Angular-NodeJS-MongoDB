@@ -13,7 +13,8 @@ export class UsersInfoComponent implements OnInit {
   user !: User;
   @Output() 
   OnDeleteUser : EventEmitter<User> = new EventEmitter();
-
+  @Output()
+  onToggleAdmit : EventEmitter<User> = new EventEmitter();
   faTimes = faTimes; // 2. From angular-fontawesome
  
 
@@ -24,6 +25,10 @@ export class UsersInfoComponent implements OnInit {
 
   onDelete(user : User){
     this.OnDeleteUser.emit(user);
+  }
+
+  onToggle(user : User){
+    this.onToggleAdmit.emit(user);
   }
 
 }

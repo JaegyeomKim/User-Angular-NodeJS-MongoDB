@@ -1,4 +1,9 @@
-<div class="task">
+<div [ngClass]  = "{reminder: user.admin}"
+    class="task"
+    (dblclick) = "onToggle(user)"
+    
+    >
+    
     <h3> {{user.name}} 
         <fa-icon 
         (click)="onDelete(user)"

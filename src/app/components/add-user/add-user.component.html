@@ -1,0 +1,18 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+        <label for="name">Name</label>
+        <input type="text" name="name" [(ngModel)]="name" id="name" placeholder="Add Name" />        
+    </div>
+
+    <div class="form-control">
+        <label for="class">Class</label>
+        <input type="text" name="class" id="class" [(ngModel)]="class" placeholder="Add Class" />
+    </div>
+
+    <div class="form-control form-control-check">
+        <label class="admin">Set Admin</label>
+        <input type="checkbox" name="admin" id="admin" [(ngModel)]="admin" placeholder="Check Admin" />
+    </div>
+
+    <input type="submit" value="Save Task" class="btn btn-block">
+</form>
