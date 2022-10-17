@@ -10,7 +10,7 @@ const port = 4000;
 
 //set connection between the API and mongoDB
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://JaegyeomKim:jk%40157600@cluster0.clqb6qh.mongodb.net/UserDataSet?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://JaegyeomKim:jk%40@cluster0.clqb6qh.mongodb.net/UserDataSet?retryWrites=true&w=majority', {
     //avoid errors
     useNewUrlParser: true,
     useUnifiedTopology: true
