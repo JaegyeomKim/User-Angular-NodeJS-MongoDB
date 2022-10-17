@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { User } from 'src/app/User';
-
+import { UiService } from 'src/app/services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-user',
@@ -15,8 +15,13 @@ export class AddUserComponent implements OnInit {
   name !: string;
   class !: string;
   admin : boolean = false;
+  showAddTask !:boolean;
+  subscription !: Subscription;
 
-  constructor() { }
+  constructor(private uiService : UiService) { 
+    this.subscription = this.uiService
+                        .onToggle()
+                        .subscribe((value) => (this.showAddTask = value));  }
 
   ngOnInit(): void {
   }
@@ -31,7 +36,6 @@ export class AddUserComponent implements OnInit {
       class: this.class,
       admin: this.admin,
     }
-
 
 
     this.OnAddUser.emit(newUser);
